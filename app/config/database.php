@@ -51,7 +51,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'recipes',
 			'username'  => 'root',
-			'password'  => '',
+			'password'  => 'connecttobryan',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
