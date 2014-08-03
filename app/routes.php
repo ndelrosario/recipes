@@ -16,9 +16,29 @@ Route::get('/', function()
 
     $dishes = DB::select("SELECT * FROM dishes order by name");
 
+    $first_recipe_view = View::make('view-recipe', [
+        'dish' => $dishes[0],
+    ]);
+
+    $first_recipe_html = $first_recipe_view->render();
+
 	return View::make('index', [
         'dishes' => $dishes,
-        ]);
+        'first_dish' => $first_recipe_html,
+    ]);
 
 });
+
+Route::get('/view/{dish_id}', function ($dish_id) {
+
+    $sql = "SELECT * FROM dishes WHERE id = ?";
+
+    $records = DB::select($sql, [$dish_id]);
+
+    return View::make('view-recipe', [
+        'dish' => $records[0],
+    ]);
+});
+
+
 

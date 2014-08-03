@@ -37,23 +37,15 @@
                 <p>Choose one of my recipes below and watch it magically appear on the right side of this pane.</p>
                 <div class="list-group">
                     <?php foreach ($dishes as $dish): ?>
-                      <a href="<?php echo $dish->id ?>">
+                      <a class="ajax-link" href="<?php echo url('view', [$dish->id]) ?>">
                         <?php echo $dish->name ?></a><br>
                     <?php endforeach ?>
                 </div>
             </div>
 
-            <div class="col-md-9">
-                <div class="thumbnail">
-                    <img class="img-responsive" src="http://placehold.it/800x300" alt="">
-                    <div class="caption-full">
-                        <h4><?php echo $dish->name ?></h4>
-                        <p><?php echo $dish->description ?></p>
-                        <p><?php echo $dish->ingredients ?></p>
-                        <p><?php echo $dish->instructions ?></p>
-                        
-                    </div>
-                </div>
+            <div class="col-md-9" id="recipe_display">
+                <!-- This is where the recipe will appear -->
+                <?php echo $first_dish ?>
             </div>
         </div>
     </div>
@@ -80,6 +72,21 @@
 
     <!-- Bootstrap Core JavaScript -->
     <script src="js/bootstrap.min.js"></script>
+
+    <script type="text/javascript">
+    $(function () {
+        $('a.ajax-link').on('click', function (e) {
+            // Stop the browser from loading another page
+            e.preventDefault();
+
+            var url = $(this).attr('href');
+            
+            $.get(url, function (data) {
+                $('#recipe_display').html(data);
+            });
+        });
+    });
+    </script>
     
 </body>
 </html>
