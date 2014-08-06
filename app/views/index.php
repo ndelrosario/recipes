@@ -32,9 +32,9 @@
         <div class="row">
             <div class="col-md-3">
                 <p class="lead">Nicole's Recipe Collection</p>
-                <p>Hello. This is a collection of gluten-free recipes that I've developed since being diagnosed with celiac disease in June 2014.</p>
-                <p>This site isn't fancy at all. If you have the url of this site, chances are you only have it because I love you.</p>
-                <p>Choose one of my recipes below and watch it magically appear.</p>
+                <p>Hello. This is a collection of gluten-free recipes that I've developed since I was diagnosed with celiac disease in June 2014.</p>
+                <p>This site isn't fancy at all as it's really just meant for me and a few friends. If you have the url of this site, chances are you only have it because I love you.</p>
+                <p>Note: I regularly use a scale for cooking, so most of the time I provide weights instead of measures.</p>
                 <div class="list-group">
                     <?php foreach ($dishes as $dish): ?>
                       <a class="ajax-link" href="<?php echo url('view', [$dish->id]) ?>">
